@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Hisham Abulfeilat">
+<meta property="og:description" content="Full-stack software engineer in Amman, Jordan.">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/61647167?v=4">
+<title>Hisham Abulfeilat</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Hisham Abulfeilat, full-stack software engineer in Amman, Jordan. ASP.NET Core, React, Flutter, TypeScript and AI tooling.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a commit-log portfolio. Hero = name + live terminal over a contribution heatmap;
+   sections read like a repo: README (about), stack, featured repos, git log (experience), contact. */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --ink: #0d1626;
+  --muted: #55607a;
+  --line: #dde3ee;
+  --accent: #2b55ff;
+  --accent-ink: #ffffff;
+  --amber: #c27a12;
+  --heat-0: #e6eaf2;
+  --heat-1: #b9c8ff;
+  --heat-2: #7f9bff;
+  --heat-3: #4d72ff;
+  --heat-4: #2b55ff;
+  --term-bg: #0d1626;
+  --term-fg: #d9e1f2;
+  --term-dim: #7d8aa8;
+  --term-green: #58d68d;
+  --term-amber: #f2b45a;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.86rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
+  --step-2: clamp(1.6rem, 1.3rem + 1.4vw, 2.3rem);
+  --step-4: clamp(2.8rem, 1.6rem + 5.6vw, 5.6rem);
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a101c; --surface: #111a2b; --ink: #e8edf7; --muted: #95a1bb; --line: #223049;
+    --accent: #7d97ff; --accent-ink: #0a101c; --amber: #f2b45a;
+    --heat-0: #16213a; --heat-1: #1f3270; --heat-2: #2c48a8; --heat-3: #4f6ee6; --heat-4: #8aa2ff;
+    --term-bg: #060b14; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0a101c; --surface: #111a2b; --ink: #e8edf7; --muted: #95a1bb; --line: #223049;
+  --accent: #7d97ff; --accent-ink: #0a101c; --amber: #f2b45a;
+  --heat-0: #16213a; --heat-1: #1f3270; --heat-2: #2c48a8; --heat-3: #4f6ee6; --heat-4: #8aa2ff;
+  --term-bg: #060b14; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.mono { font-family: var(--font-mono); }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { font-family: var(--font-mono); font-size: var(--step--1); text-decoration: none; font-weight: 500; }
+.brand b { color: var(--accent); font-weight: 500; }
+.nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; font-size: var(--step--1); font-weight: 600; }
+.nav ul a { text-decoration: none; color: var(--muted); }
+.nav ul a:hover { color: var(--ink); }
+.theme-btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; width: 36px; height: 36px; cursor: pointer; display: grid; place-items: center; flex: none; }
+.theme-btn svg { width: 18px; height: 18px; }
+@media (max-width: 720px) { .nav ul { display: none; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+.heat { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .55; pointer-events: none;
+  mask-image: linear-gradient(100deg, transparent 0%, transparent 35%, #000 75%); -webkit-mask-image: linear-gradient(100deg, transparent 0%, transparent 35%, #000 75%); }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding-block: 72px 80px; }
+.hero .wrap > * { min-width: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); letter-spacing: .04em; display: flex; align-items: center; gap: 10px; margin: 0 0 18px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--term-green); box-shadow: 0 0 0 4px color-mix(in srgb, var(--term-green) 25%, transparent); }
+h1 { font-family: var(--font-display); font-size: var(--step-4); line-height: .95; letter-spacing: -0.035em; font-weight: 800; margin: 0; text-wrap: balance; }
+h1 .last { color: var(--accent); }
+.lede { font-size: var(--step-1); color: var(--muted); max-width: 34ch; margin: 22px 0 30px; line-height: 1.45; }
+.lede strong { color: var(--ink); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: var(--step--1); border: 1px solid var(--line); background: var(--surface); transition: transform .15s ease, border-color .15s ease; }
+.btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn svg { width: 16px; height: 16px; }
+
+.term { background: var(--term-bg); color: var(--term-fg); border-radius: var(--radius); font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.7; box-shadow: 0 30px 60px -30px rgba(13, 22, 38, .55); overflow: hidden; border: 1px solid color-mix(in srgb, var(--term-fg) 12%, transparent); }
+.term-bar { display: flex; gap: 7px; padding: 12px 14px; border-bottom: 1px solid color-mix(in srgb, var(--term-fg) 10%, transparent); align-items: center; }
+.term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #3a4560; }
+.term-bar span { margin-left: auto; color: var(--term-dim); font-size: .74rem; }
+.term pre { margin: 0; padding: 16px 18px 18px; white-space: pre-wrap; word-break: break-word; font: inherit; }
+.term .p { color: var(--term-green); }
+.term .d { color: var(--term-dim); }
+.term .a { color: var(--term-amber); }
+.term .rot { color: var(--term-fg); }
+.caret { display: inline-block; width: .6em; height: 1.1em; background: var(--term-green); vertical-align: -0.18em; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Sections */
+section { padding-block: 88px; border-bottom: 1px solid var(--line); }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+.sec-head h2 { font-family: var(--font-display); font-size: var(--step-2); letter-spacing: -0.02em; margin: 0; font-weight: 700; }
+.path { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.path b { color: var(--accent); font-weight: 500; }
+
+.about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; }
+.about > * { min-width: 0; }
+.about p { margin: 0 0 1em; max-width: 62ch; }
+.about p:first-child { font-size: var(--step-1); line-height: 1.5; }
+.facts { display: grid; gap: 0; border-top: 1px solid var(--line); align-self: start; }
+.facts div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: var(--step--1); }
+.facts dt { font-family: var(--font-mono); color: var(--muted); }
+.facts dd { margin: 0; font-weight: 600; }
+
+/* Stack */
+.stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.stack-col { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.stack-col h3 { font-family: var(--font-mono); font-size: var(--step--1); font-weight: 500; color: var(--muted); margin: 0 0 14px; text-transform: uppercase; letter-spacing: .08em; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.chips li { font-size: .86rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line)); }
+
+/* Projects */
+.projects { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+.proj { grid-column: span 2; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; transition: border-color .2s ease, transform .2s ease; }
+.proj:hover { border-color: var(--accent); transform: translateY(-3px); }
+.proj.big { grid-column: span 3; }
+.proj-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.repo { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+.badge { font-family: var(--font-mono); font-size: .72rem; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.badge.live { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 45%, var(--line)); }
+.proj h3 { font-family: var(--font-display); font-size: var(--step-1); margin: 0; letter-spacing: -0.01em; }
+.proj p { margin: 0; color: var(--muted); font-size: .95rem; }
+.proj .figure { font-family: var(--font-mono); font-size: .8rem; color: var(--ink); display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.proj .figure span b { color: var(--accent); font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; list-style: none; padding-left: 0; margin-bottom: 0; }
+.tags li { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+.tags li::before { content: "#"; color: var(--accent); }
+.proj a.go { font-weight: 700; font-size: var(--step--1); text-decoration: none; color: var(--accent); }
+.proj a.go:hover { text-decoration: underline; }
+@media (max-width: 960px) { .proj, .proj.big { grid-column: span 3; } }
+@media (max-width: 640px) { .projects { grid-template-columns: 1fr; } .proj, .proj.big { grid-column: auto; } }
+
+/* Git log */
+.log { list-style: none; margin: 0; padding: 0; position: relative; }
+.log::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.log li { position: relative; padding-left: 40px; padding-bottom: 34px; }
+.log li:last-child { padding-bottom: 0; }
+.log li::before { content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); }
+.log li.head::before { background: var(--accent); }
+.commit { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.commit .sha { color: var(--amber); }
+.commit .ref { color: var(--accent); }
+.log h3 { font-family: var(--font-display); font-size: var(--step-1); margin: 4px 0 6px; letter-spacing: -0.01em; }
+.log h3 span { color: var(--muted); font-weight: 500; }
+.log p { margin: 0; max-width: 70ch; color: var(--muted); }
+
+/* Credentials */
+.creds { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.cred { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; background: var(--surface); display: grid; gap: 6px; align-content: start; }
+.cred .k { font-family: var(--font-mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.cred h3 { margin: 0; font-family: var(--font-display); font-size: var(--step-1); }
+.cred p { margin: 0; color: var(--muted); font-size: .95rem; }
+.status { justify-self: start; font-family: var(--font-mono); font-size: .74rem; padding: 3px 10px; border-radius: 999px; margin-top: 6px; border: 1px solid var(--line); }
+.status.done { color: var(--term-green); border-color: color-mix(in srgb, var(--term-green) 45%, var(--line)); }
+.status.wip { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 45%, var(--line)); }
+
+/* Contact */
+.contact { padding-block: 96px; border-bottom: 0; }
+.contact h2 { font-family: var(--font-display); font-size: var(--step-4); letter-spacing: -0.035em; line-height: .95; margin: 0 0 22px; max-width: 14ch; text-wrap: balance; }
+.contact p { color: var(--muted); max-width: 52ch; margin: 0 0 28px; font-size: var(--step-1); line-height: 1.45; }
+footer { padding-block: 28px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 48px 56px; gap: 36px; }
+  .about { grid-template-columns: 1fr; gap: 28px; }
+  section { padding-block: 64px; }
+}
+@media (max-width: 420px) { .facts div { grid-template-columns: 1fr; gap: 2px; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">~/<b>hisham</b>-abulfeilat</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="theme-btn" id="theme-toggle" type="button" aria-label="Switch between light and dark theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas class="heat" id="heat" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Full-stack software engineer · Amman, Jordan</p>
+        <h1>Hisham<br><span class="last">Abulfeilat</span></h1>
+        <p class="lede">I build <strong>real-time banking apps</strong> by day and <strong>AI-powered developer tools</strong> by night, across web, mobile and desktop.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See my work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn" href="https://github.com/HishamAbulfeilat" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+            GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/hisham-abulfeilat" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+            LinkedIn</a>
+        </div>
+      </div>
+      <div class="term" role="img" aria-label="Terminal showing Hisham's role, stack and current work">
+        <div class="term-bar"><i></i><i></i><i></i><span>zsh · hisham@amman</span></div>
+<pre><span class="p">❯</span> whoami
+Hisham Abulfeilat, full-stack engineer
+<span class="p">❯</span> cat stack.txt
+<span class="d">backend </span> ASP.NET Core · Node · PostgreSQL
+<span class="d">frontend</span> React · Angular · TypeScript
+<span class="d">mobile  </span> Flutter · React Native
+<span class="d">cloud   </span> Azure DevOps · AWS · Docker
+<span class="p">❯</span> ls ~/side-projects
+<span class="a">GhostForge/</span>  <span class="a">vinylcut-studio/</span>  <span class="a">Jorcord/</span>
+<span class="a">EstateHub/</span>   <span class="a">safe-ride-home/</span>
+<span class="p">❯</span> echo $NOW
+<span class="rot" id="now">building real-time banking at Ejada</span>
+<span class="p">❯</span> <span class="caret" aria-hidden="true"></span></pre>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>About</h2><span class="path">~/hisham/<b>README.md</b></span></div>
+      <div class="about">
+        <div>
+          <p>I'm a software engineer in Amman who likes building things people use every day.</p>
+          <p>At Ejada I work on digital banking apps across web and mobile: React and React Native on the front end, ASP.NET Core APIs behind them, real-time sync over WebSockets, fraud-detection modules, and CI/CD pipelines in Azure DevOps and GitHub Actions.</p>
+          <p>In 2026 I completed SAP's Young Professionals Program, where I worked through end-to-end business processes in SAP Business Suite and built with SAP's Generative AI Hub. That pushed me toward the mix I enjoy most: solid full-stack engineering with AI and cloud built in. I'm now working through the AWS AI Academy.</p>
+          <p>Outside work I ship side projects: an AI development studio with a voice assistant, a vector design app for sign makers, and full-stack platforms in TypeScript and PostgreSQL.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>role</dt><dd>Full-Stack Developer, Ejada</dd></div>
+          <div><dt>location</dt><dd>Amman, Jordan</dd></div>
+          <div><dt>degree</dt><dd>B.Sc. Information Science, HTU</dd></div>
+          <div><dt>gpa</dt><dd class="mono">3.64</dd></div>
+          <div><dt>focus</dt><dd>Full stack with AI built in</dd></div>
+          <div><dt>exploring</dt><dd>Generative AI, AI agents, AWS</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head"><h2>Stack</h2><span class="path">~/hisham/<b>package.json</b></span></div>
+      <div class="stack">
+        <div class="stack-col"><h3>Backend</h3><ul class="chips"><li>ASP.NET Core</li><li>C#</li><li>Node.js</li><li>Express</li><li>REST APIs</li><li>WebSockets</li></ul></div>
+        <div class="stack-col"><h3>Frontend</h3><ul class="chips"><li>React</li><li>Angular</li><li>TypeScript</li><li>Vite</li><li>Tailwind</li></ul></div>
+        <div class="stack-col"><h3>Mobile &amp; desktop</h3><ul class="chips"><li>Flutter</li><li>React Native</li><li>Electron</li><li>Tauri</li></ul></div>
+        <div class="stack-col"><h3>Data</h3><ul class="chips"><li>PostgreSQL</li><li>SQL Server</li><li>Drizzle ORM</li></ul></div>
+        <div class="stack-col"><h3>Cloud &amp; DevOps</h3><ul class="chips"><li>Azure DevOps</li><li>GitHub Actions</li><li>AWS</li><li>Docker</li></ul></div>
+        <div class="stack-col"><h3>AI &amp; enterprise</h3><ul class="chips"><li>LLM integration</li><li>AI agents</li><li>MCP</li><li>SAP Generative AI Hub</li><li>SAP BTP</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head"><h2>Featured projects</h2><span class="path">~/hisham/<b>repos/</b></span></div>
+      <div class="projects">
+        <article class="proj big">
+          <div class="proj-top"><span class="repo">HishamAbulfeilat/GhostForge</span><span class="badge live">v5.3.2</span></div>
+          <h3>GhostForge JARVIS</h3>
+          <p>An AI development studio on top of GitHub Copilot, driven by a "Hey JARVIS" voice assistant. It writes code, runs tests and manages the workflow through specialized agents, an autonomous agent team and an MCP server.</p>
+          <div class="figure"><span><b>15</b> agents</span><span><b>97</b> commands</span><span><b>24</b> languages</span><span><b>4</b> platforms</span></div>
+          <ul class="tags"><li>node</li><li>electron</li><li>python</li><li>fastapi</li><li>mcp</li><li>android</li></ul>
+          <a class="go" href="https://github.com/HishamAbulfeilat/GhostForge" target="_blank" rel="noopener">View repository →</a>
+        </article>
+        <article class="proj big">
+          <div class="proj-top"><span class="repo">HishamAbulfeilat/vinylcut-studio</span><span class="badge">MIT</span></div>
+          <h3>VinylCut Studio</h3>
+          <p>An open-source sign-making and vinyl-cutting app for web and desktop, with real boolean geometry (weld, trim, knife), bitmap and centerline tracing, live effects, analytic warps and output straight to a cutter.</p>
+          <div class="figure"><span><b>42</b> drawing tools</span><span><b>13</b> warps</span><span>WebSerial cutter output</span></div>
+          <ul class="tags"><li>react</li><li>vite</li><li>electron</li><li>svg</li><li>geometry</li></ul>
+          <a class="go" href="https://github.com/HishamAbulfeilat/vinylcut-studio" target="_blank" rel="noopener">View repository →</a>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><span class="repo">jorcord-builds</span><span class="badge">CI/CD</span></div>
+          <h3>Jorcord</h3>
+          <p>A cross-platform Tauri app with a public release pipeline that builds and signs it for Windows, macOS, Linux, Android and iOS from one GitHub Actions workflow.</p>
+          <ul class="tags"><li>tauri</li><li>rust</li><li>github-actions</li></ul>
+          <a class="go" href="https://github.com/HishamAbulfeilat/jorcord-builds" target="_blank" rel="noopener">View releases →</a>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><span class="repo">estatehub</span><span class="badge">Full stack</span></div>
+          <h3>EstateHub</h3>
+          <p>Real estate management: owners track listings, tenants, leases and payments, renters search an interactive map, and dashboards show revenue, occupancy and overdue payments.</p>
+          <ul class="tags"><li>react</li><li>express</li><li>postgres</li><li>drizzle</li><li>openapi</li></ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><span class="repo">safe-ride-home</span><span class="badge">Mobile web</span></div>
+          <h3>Safe Ride Home</h3>
+          <p>School bus tracking for parents, students and staff: live GPS, ETA notifications, route management and requests for an alternate drop-off point.</p>
+          <ul class="tags"><li>react</li><li>typescript</li><li>maps</li></ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><span class="repo">afaq-riyada-portal</span><span class="badge">API</span></div>
+          <h3>Afaq Riyada Portal</h3>
+          <p>A team portal backend with sign-in, role-based access per app with approvals, file storage, and shared data versioned with a full revision history.</p>
+          <ul class="tags"><li>typescript</li><li>express</li><li>postgres</li><li>clerk</li></ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><span class="repo">connectify-chat</span><span class="badge">Realtime</span></div>
+          <h3>Connectify Chat</h3>
+          <p>Real-time one-to-one and group chat with Google sign-in and per-user access rules, so people only see their own conversations.</p>
+          <ul class="tags"><li>react</li><li>realtime</li><li>auth</li></ul>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><span class="repo">graduation-project</span><span class="badge">Python</span></div>
+          <h3>Workstation energy saver</h3>
+          <p>My graduation project: a Python system that cut the energy use of office workstations.</p>
+          <ul class="tags"><li>python</li><li>energy</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><h2>Experience</h2><span class="path mono">git log --graph</span></div>
+      <ol class="log">
+        <li class="head">
+          <div class="commit"><span class="sha">HEAD → ejada</span><span>Oct 2024 to now</span></div>
+          <h3>Full-Stack Developer <span>· Ejada</span></h3>
+          <p>Digital banking apps for web and mobile with React, React Native and Flutter on ASP.NET Core APIs. Real-time sync over WebSockets, fraud-detection modules, and CI/CD pipelines in Azure DevOps and GitHub Actions.</p>
+        </li>
+        <li>
+          <div class="commit"><span class="sha">sap-ypp</span><span>Jul to Sep 2026</span></div>
+          <h3>SAP Young Professionals Program <span>· SAP</span></h3>
+          <p>End-to-end business processes in SAP Business Suite, and hands-on work building with SAP's Generative AI Hub.</p>
+        </li>
+        <li>
+          <div class="commit"><span class="sha">sita</span><span>Oct 2023 to Apr 2024</span></div>
+          <h3>IT Service Desk Intern <span>· SITA</span></h3>
+          <p>Supported users and systems for the air transport IT provider.</p>
+        </li>
+        <li>
+          <div class="commit"><span class="sha">progresssoft</span><span>Aug to Sep 2023</span></div>
+          <h3>Software Development Intern <span>· ProgressSoft</span></h3>
+          <p>First professional development work on fintech software.</p>
+        </li>
+        <li>
+          <div class="commit"><span class="sha">init</span><span>2019 to 2024</span></div>
+          <h3>B.Sc. Information Science <span>· Al Hussein Technical University</span></h3>
+          <p>Graduated with a 3.64 GPA.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="wrap">
+      <div class="sec-head"><h2>Programs &amp; certifications</h2><span class="path">~/hisham/<b>certs/</b></span></div>
+      <div class="creds">
+        <div class="cred"><span class="k">SAP · 2026</span><h3>Young Professionals Program</h3><p>Business processes in SAP Business Suite and Generative AI Hub.</p><span class="status done">completed</span></div>
+        <div class="cred"><span class="k">AWS · AI Academy</span><h3>AWS Certified AI Practitioner</h3><p>Working through the AWS AI Academy certification track.</p><span class="status wip">in progress</span></div>
+        <div class="cred"><span class="k">HTU · 2024</span><h3>B.Sc. Information Science</h3><p>Al Hussein Technical University, GPA 3.64.</p><span class="status done">graduated</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Let's build something together.</h2>
+      <p>I'm open to full-stack, .NET and cloud roles, and always happy to talk about AI tooling. The fastest way to reach me is LinkedIn.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/hisham-abulfeilat" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        <a class="btn" href="https://github.com/HishamAbulfeilat" target="_blank" rel="noopener">Follow on GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© <span id="yr">2026</span> Hisham Abulfeilat</span><span>Built by hand, hosted on GitHub Pages</span></div>
+</footer>
+
+<script>
+(function () {
+  // Theme toggle (remembers the choice when storage is available)
+  var root = document.documentElement, KEY = "ha-theme";
+  try { var saved = localStorage.getItem(KEY); if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved); } catch (e) {}
+  function isDark() {
+    var t = root.getAttribute("data-theme");
+    if (t) return t === "dark";
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  document.getElementById("theme-toggle").addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+    drawHeat();
+  });
+
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  // Rotating "now" line in the terminal (text is visible from the start)
+  var lines = ["building real-time banking at Ejada", "earning AWS AI Practitioner", "teaching JARVIS new tricks", "shipping side projects after hours"];
+  var nowEl = document.getElementById("now"), i = 0;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) setInterval(function () { i = (i + 1) % lines.length; nowEl.textContent = lines[i]; }, 3200);
+
+  // Contribution-style heatmap behind the hero
+  var canvas = document.getElementById("heat");
+  function drawHeat() {
+    var rect = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (!rect.width) return;
+    canvas.width = rect.width * dpr; canvas.height = rect.height * dpr;
+    var ctx = canvas.getContext("2d"); ctx.scale(dpr, dpr);
+    var cs = getComputedStyle(root), cell = 14, gap = 4, step = cell + gap;
+    var colors = [0, 1, 2, 3, 4].map(function (n) { return cs.getPropertyValue("--heat-" + n).trim(); });
+    var seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    for (var x = 0; x < rect.width; x += step) {
+      for (var y = 0; y < rect.height; y += step) {
+        var r = rnd(), lvl = r < .45 ? 0 : r < .7 ? 1 : r < .85 ? 2 : r < .95 ? 3 : 4;
+        ctx.fillStyle = colors[lvl];
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(x, y, cell, cell, 3); else ctx.rect(x, y, cell, cell);
+        ctx.fill();
+      }
+    }
+  }
+  drawHeat();
+  var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(drawHeat, 150); });
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    if (mq.addEventListener) mq.addEventListener("change", drawHeat);
+  }
+})();
+</script>
+
+</body>
+</html>
