@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a commit-log portfolio. Hero = name + live terminal over a contribution heatmap;
-   sections read like a repo: README (about), stack, featured repos, git log (experience), contact. */
+   sections read like a repo: README (about), stack, featured repos, education, contact. */
 :root {
   --bg: #f4f6fa;
   --surface: #ffffff;
@@ -215,7 +215,6 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
         <li><a href="#about">About</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -232,7 +231,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
       <div>
         <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Full-stack software engineer · Amman, Jordan</p>
         <h1>Hisham<br><span class="last">Abulfeilat</span></h1>
-        <p class="lede">I build <strong>real-time banking apps</strong> by day and <strong>AI-powered developer tools</strong> by night, across web, mobile and desktop.</p>
+        <p class="lede">I build <strong>full-stack apps</strong> and <strong>AI-powered developer tools</strong> across web, mobile and desktop.</p>
         <div class="cta">
           <a class="btn primary" href="#projects">See my work
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -257,7 +256,7 @@ Hisham Abulfeilat, full-stack engineer
 <span class="a">GhostForge/</span>  <span class="a">vinylcut-studio/</span>  <span class="a">Jorcord/</span>
 <span class="a">EstateHub/</span>   <span class="a">safe-ride-home/</span>
 <span class="p">❯</span> echo $NOW
-<span class="rot" id="now">building real-time banking at Ejada</span>
+<span class="rot" id="now">shipping full-stack apps end to end</span>
 <span class="p">❯</span> <span class="caret" aria-hidden="true"></span></pre>
       </div>
     </div>
@@ -269,12 +268,12 @@ Hisham Abulfeilat, full-stack engineer
       <div class="about">
         <div>
           <p>I'm a software engineer in Amman who likes building things people use every day.</p>
-          <p>At Ejada I work on digital banking apps across web and mobile: React and React Native on the front end, ASP.NET Core APIs behind them, real-time sync over WebSockets, fraud-detection modules, and CI/CD pipelines in Azure DevOps and GitHub Actions.</p>
-          <p>In 2026 I completed SAP's Young Professionals Program, where I worked through end-to-end business processes in SAP Business Suite and built with SAP's Generative AI Hub. That pushed me toward the mix I enjoy most: solid full-stack engineering with AI and cloud built in. I'm now working through the AWS AI Academy.</p>
+          <p>I work across the whole stack: React and Angular on the front end, ASP.NET Core and Node.js APIs behind them, real-time features over WebSockets, and CI/CD pipelines in Azure DevOps and GitHub Actions. I build for mobile with Flutter and React Native, and for desktop with Electron and Tauri.</p>
+          <p>The mix I enjoy most is solid full-stack engineering with AI and cloud built in. I work with LLMs and AI agents, know my way around SAP Business Suite and SAP's Generative AI Hub, and I'm working toward my AWS AI Practitioner certification.</p>
           <p>Outside work I ship side projects: an AI development studio with a voice assistant, a vector design app for sign makers, and full-stack platforms in TypeScript and PostgreSQL.</p>
         </div>
         <dl class="facts">
-          <div><dt>role</dt><dd>Full-Stack Developer, Ejada</dd></div>
+          <div><dt>role</dt><dd>Full-Stack Software Engineer</dd></div>
           <div><dt>location</dt><dd>Amman, Jordan</dd></div>
           <div><dt>degree</dt><dd>B.Sc. Information Science, HTU</dd></div>
           <div><dt>gpa</dt><dd class="mono">3.64</dd></div>
@@ -338,19 +337,13 @@ Hisham Abulfeilat, full-stack engineer
           <p>School bus tracking for parents, students and staff: live GPS, ETA notifications, route management and requests for an alternate drop-off point.</p>
           <ul class="tags"><li>react</li><li>typescript</li><li>maps</li></ul>
         </article>
-        <article class="proj">
-          <div class="proj-top"><span class="repo">afaq-riyada-portal</span><span class="badge">API</span></div>
-          <h3>Afaq Riyada Portal</h3>
-          <p>A team portal backend with sign-in, role-based access per app with approvals, file storage, and shared data versioned with a full revision history.</p>
-          <ul class="tags"><li>typescript</li><li>express</li><li>postgres</li><li>clerk</li></ul>
-        </article>
-        <article class="proj">
+        <article class="proj big">
           <div class="proj-top"><span class="repo">connectify-chat</span><span class="badge">Realtime</span></div>
           <h3>Connectify Chat</h3>
           <p>Real-time one-to-one and group chat with Google sign-in and per-user access rules, so people only see their own conversations.</p>
           <ul class="tags"><li>react</li><li>realtime</li><li>auth</li></ul>
         </article>
-        <article class="proj">
+        <article class="proj big">
           <div class="proj-top"><span class="repo">graduation-project</span><span class="badge">Python</span></div>
           <h3>Workstation energy saver</h3>
           <p>My graduation project: a Python system that cut the energy use of office workstations.</p>
@@ -360,44 +353,11 @@ Hisham Abulfeilat, full-stack engineer
     </div>
   </section>
 
-  <section id="experience">
-    <div class="wrap">
-      <div class="sec-head"><h2>Experience</h2><span class="path mono">git log --graph</span></div>
-      <ol class="log">
-        <li class="head">
-          <div class="commit"><span class="sha">HEAD → ejada</span><span>Oct 2024 to now</span></div>
-          <h3>Full-Stack Developer <span>· Ejada</span></h3>
-          <p>Digital banking apps for web and mobile with React, React Native and Flutter on ASP.NET Core APIs. Real-time sync over WebSockets, fraud-detection modules, and CI/CD pipelines in Azure DevOps and GitHub Actions.</p>
-        </li>
-        <li>
-          <div class="commit"><span class="sha">sap-ypp</span><span>Jul to Sep 2026</span></div>
-          <h3>SAP Young Professionals Program <span>· SAP</span></h3>
-          <p>End-to-end business processes in SAP Business Suite, and hands-on work building with SAP's Generative AI Hub.</p>
-        </li>
-        <li>
-          <div class="commit"><span class="sha">sita</span><span>Oct 2023 to Apr 2024</span></div>
-          <h3>IT Service Desk Intern <span>· SITA</span></h3>
-          <p>Supported users and systems for the air transport IT provider.</p>
-        </li>
-        <li>
-          <div class="commit"><span class="sha">progresssoft</span><span>Aug to Sep 2023</span></div>
-          <h3>Software Development Intern <span>· ProgressSoft</span></h3>
-          <p>First professional development work on fintech software.</p>
-        </li>
-        <li>
-          <div class="commit"><span class="sha">init</span><span>2019 to 2024</span></div>
-          <h3>B.Sc. Information Science <span>· Al Hussein Technical University</span></h3>
-          <p>Graduated with a 3.64 GPA.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
   <section id="credentials">
     <div class="wrap">
-      <div class="sec-head"><h2>Programs &amp; certifications</h2><span class="path">~/hisham/<b>certs/</b></span></div>
+      <div class="sec-head"><h2>Education &amp; certifications</h2><span class="path">~/hisham/<b>certs/</b></span></div>
       <div class="creds">
-        <div class="cred"><span class="k">SAP · 2026</span><h3>Young Professionals Program</h3><p>Business processes in SAP Business Suite and Generative AI Hub.</p><span class="status done">completed</span></div>
+        <div class="cred"><span class="k">Self-taught · ongoing</span><h3>AI agents &amp; MCP</h3><p>Building agent teams, voice assistants and MCP servers, shipped in GhostForge JARVIS.</p><span class="status wip">always learning</span></div>
         <div class="cred"><span class="k">AWS · AI Academy</span><h3>AWS Certified AI Practitioner</h3><p>Working through the AWS AI Academy certification track.</p><span class="status wip">in progress</span></div>
         <div class="cred"><span class="k">HTU · 2024</span><h3>B.Sc. Information Science</h3><p>Al Hussein Technical University, GPA 3.64.</p><span class="status done">graduated</span></div>
       </div>
@@ -440,7 +400,7 @@ Hisham Abulfeilat, full-stack engineer
   document.getElementById("yr").textContent = new Date().getFullYear();
 
   // Rotating "now" line in the terminal (text is visible from the start)
-  var lines = ["building real-time banking at Ejada", "earning AWS AI Practitioner", "teaching JARVIS new tricks", "shipping side projects after hours"];
+  var lines = ["shipping full-stack apps end to end", "earning AWS AI Practitioner", "teaching JARVIS new tricks", "shipping side projects after hours"];
   var nowEl = document.getElementById("now"), i = 0;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!reduce) setInterval(function () { i = (i + 1) % lines.length; nowEl.textContent = lines[i]; }, 3200);
